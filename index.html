@@ -164,6 +164,11 @@
         @media (min-width: 600px) { .btn-pixel { padding: 10px 24px; box-shadow: 0 4px 0 #e65100; font-size: 14px; } }
         .btn-green { background-color: #4caf50; border-color: #1b5e20; box-shadow: 0 3px 0 #1b5e20; }
         @media (min-width: 600px) { .btn-green { box-shadow: 0 4px 0 #1b5e20; } }
+
+        /* EL PANEL SE HA ELIMINADO POR COMPLETO AQUÍ */
+        #main-config-panel {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
@@ -324,7 +329,7 @@
             } else if (num === 7) {
                 targetPlant.x = 500; targetPlant.y = 115; hazards = []; 
                 for(let i=0; i<35; i++) {
-                    sceneryFlowers.push({ x: Math.random() * 420 + 40, y: Math.random() * 180 + 45, type: ['🌸', '🌻', '🌷', '🌿'][Math.floor(Math.random()*5)] });
+                    sceneryFlowers.push({ x: Math.random() * 420 + 40, y: Math.random() * 180 + 45, type: ['🌸', '🌻', '🌷', '🌿'][Math.floor(Math.random()*4)] });
                 }
             }
             if (gameState.currentLevel === 4) { document.getElementById("game-score").innerText = `ANIMALES: ${gameState.animalsCaught}/3`; }
@@ -517,7 +522,7 @@
 
         function moveFocus(current, nextId) { if (current.value.length >= 1) document.getElementById(nextId).focus(); }
         function returnToMenu() {
-            document.getElementById("screen-lock").classList.remove("active"); document.getElementById("screen-letter").classList.remove("active");
+            document.getElementById("screen-lock").classList.remove("active"); document.getElementById("screen-letter").classList.add("active");
             document.getElementById("screen-game").classList.remove("active"); document.getElementById("screen-intro").classList.add("active");
             gameState.gameActive = false;
         }
