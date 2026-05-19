@@ -17,7 +17,7 @@
             min-height: 100vh;
         }
         @media (min-width: 902px) {
-            body { flex-direction: row; justify-content: center; align-items: flex-start; gap: 30px; padding: 20px; }
+            body { justify-content: center; align-items: center; padding: 20px; }
         }
 
         /* CONSOLA DE VIDEOJUEGO RESPONSIVA */
@@ -26,13 +26,13 @@
             border: 5px solid #ff8f00;
             border-radius: 16px;
             padding: 12px;
-            width: 100%;
+            width: 95vw;
             max-width: 450px;
             box-shadow: 0 8px 0 #ff6f00;
             margin-bottom: 10px;
         }
         @media (min-width: 600px) {
-            .console-container { padding: 20px; max-width: 640px; box-shadow: 0 12px 0 #ff6f00; }
+            .console-container { padding: 20px; max-width: 640px; box-shadow: 0 12px 0 #ff6f00; width: 100%; }
         }
 
         .console-header {
@@ -164,26 +164,13 @@
         @media (min-width: 600px) { .btn-pixel { padding: 10px 24px; box-shadow: 0 4px 0 #e65100; font-size: 14px; } }
         .btn-green { background-color: #4caf50; border-color: #1b5e20; box-shadow: 0 3px 0 #1b5e20; }
         @media (min-width: 600px) { .btn-green { box-shadow: 0 4px 0 #1b5e20; } }
-
-        /* PANEL CONFIGURADOR */
-        #main-config-panel {
-            background-color: #fff; border: 4px solid #ff8f00; border-radius: 16px;
-            padding: 20px; width: 100%; max-width: 420px; box-shadow: 6px 6px 0 #ffe082;
-        }
-        #main-config-panel h2 { font-size: 19px; color: #e65100; margin-bottom: 10px; border-bottom: 2px solid #ffe082; padding-bottom: 5px; }
-        .panel-desc { font-size: 12px; color: #666; margin-bottom: 15px; }
-        .scrollbox { max-height: 380px; overflow-y: auto; padding-right: 5px; }
-        .section-box { border-radius: 8px; padding: 12px; margin-bottom: 12px; border: 1px solid #ddd; }
-        .form-group { margin-bottom: 8px; }
-        .form-group label { display: block; font-size: 11px; font-weight: bold; margin-bottom: 3px; color: #555; }
-        .form-group input, .form-group textarea { width: 100%; padding: 7px; font-size: 12px; border: 1px solid #ccc; border-radius: 4px; }
     </style>
 </head>
 <body>
 
     <div class="console-container">
         <div class="console-header">
-            <h1>Te amoteeee amor</h1>
+            <h1>AGRO-QUEST IMPOSIBLE 👿</h1>
             <p>¡Edición Extrema: Historia y Persecución!</p>
         </div>
 
@@ -196,7 +183,7 @@
                 </div>
                 <div style="background-color:#fff; padding:10px; border-radius:50%; font-size:24px; box-shadow: 0 3px 0 #004d40;">👩‍🌾</div>
                 <button onclick="startGame()" class="btn-pixel">¡INICIAR EL GRAN REGALO!</button>
-                <p style="font-size:11px; font-weight:bold;">Suerte en los laberintos, <span id="lbl-novio-intro" style="color:#fff176;">Amor</span> 💚</p>
+                <p style="font-size:11px; font-weight:bold;">Suerte en los laberintos, Juanin 💚</p>
             </div>
 
             <div id="screen-game" class="game-screen">
@@ -239,10 +226,10 @@
             </div>
 
             <div id="screen-lock" class="game-screen" style="background-color: #00796b; color: white; justify-content: center; gap: 12px;">
-                <div style="font-size:30px;">🐑🐄🐓❤️</div>
+                <div style="font-size:30px;">🐑🐄🐓🤝❤️</div>
                 <h3>¡INVERNADERO BLOQUEADO!</h3>
                 <p style="font-size:11px; padding: 0 10px; line-height: 1.3;">
-                    Introduce el código secreto de 4 dígitos revelado por tu novia en el nivel anterior para abrir tu carta:
+                    Introduce el código secreto de 4 dígitos revelado por Ale en el nivel anterior para abrir tu carta:
                 </p>
                 <div class="code-inputs">
                     <input type="text" id="code-digit-1" maxlength="1" onkeyup="moveFocus(this, 'code-digit-2')">
@@ -265,74 +252,26 @@
         </div>
     </div>
 
-    <div id="main-config-panel">
-        <h2>🛠️ Diseñador de 7 Niveles</h2>
-        <p class="panel-desc">¡Si los escarabajos del Nivel 6 lo tocan, se reinicia el juego desde el Nivel 4!</p>
-        
-        <div class="scrollbox">
-            <div class="section-box" style="background-color:#e8f5e9; border-color:#c8e6c9;">
-                <h3 style="color:#2e7d32; font-size:11px; margin-bottom:5px;">Ajustes Generales</h3>
-                <div class="form-group"><label>Su Nombre:</label><input type="text" id="cfg-name-boyfriend" value="Juanin" oninput="applyConfig()"></div>
-                <div class="form-group"><label>Clave de Desbloqueo (4 números):</label><input type="text" id="cfg-lock-code" value="1210" maxlength="4" oninput="applyConfig()"></div>
-            </div>
-
-            <div class="section-box" style="background-color:#fff3e0; border-color:#ffe0b2;">
-                <h3>Diálogos Narrativos (Uno por nivel)</h3>
-                <div class="form-group"><label>Nivel 1 (Girasol):</label><textarea id="cfg-lvl1" rows="2" oninput="applyConfig()">¡Analizaste el Girasol ! Su fotosíntesis está perfecta. Descubres una pista: 'Para tu regalo final, primero debes realizar un rescate botánico en los viveros...'</textarea></div>
-                <div class="form-group"><label>Nivel 2 (Parcela):</label><textarea id="cfg-lvl2" rows="2" oninput="applyConfig()">¡Cruzaste la Parcela Trabadita esquivando plagas! Notas un cartel en el piso: '¡Alerta! Se reportan animales de granja perdidos en los sectores avanzados de conservación...'</textarea></div>
-                <div class="form-group"><label>Nivel 3 (Manzanas):</label><textarea id="cfg-lvl3" rows="2" oninput="applyConfig()">¡Buen muestreo de manzanas neón! Una nota amarrada a la rama dice: '¡Por favor Juanin, el siguiente sector está lleno de plagas y los animales necesitan tu ayuda urgente!'</textarea></div>
-                <div class="form-group"><label>Nivel 4 (RECOLECTAR ANIMALES):</label><textarea id="cfg-lvl4" rows="2" oninput="applyConfig()">¡Increíble, salvaste a la ovejita, la vaca y el pollito! Pero ten cuidado: 'Los escarabajos gigantes mutados están furiosos y los perseguirán en los próximos mapas...'</textarea></div>
-                <div class="form-group"><label>Nivel 5 (Persecución 1 bicho):</label><textarea id="cfg-lvl5" rows="2" oninput="applyConfig()">¡Uff, ese escarabajo gigante acosador corría pesadísimo tras de ti! Por suerte lograste mantener a salvo a los animales. Cuidalos muchisimo amof ¡Ya casi llegas al santuario!</textarea></div>
-                <div class="form-group"><label>Nivel 6 (¡PERSECUCIÓN 2 BICHOS - SE REINICIA AL 4!):</label><textarea id="cfg-lvl6" rows="2" oninput="applyConfig()">¡Dios mío, qué locura de escape! Burlaste a los dos bichos acosadores del lago sin que te atraparan. ¡El puente al santuario ambiental de tu novia se ha abierto por fin!</textarea></div>
-                <div class="form-group"><label>Nivel 7 (TU NIVEL - Ale ):</label><textarea id="cfg-lvl7" rows="2" oninput="applyConfig()">¡Hola mi vida! Me da tanta felicidad que hayas cruzado los laberintos y salvado a los animales de las plagas. ¡Eres mi favorito en el universo! La clave que ocuparás para la siguiente pantalla es: 1210... Te amoteee corazón de melón. 🥰🌱</textarea></div>
-            </div>
-
-            <div class="section-box" style="background-color:#ffebee; border-color:#ffcdd2;">
-                <h3 style="color:#c62828; font-size:11px; margin-bottom:5px;">Tu Carta de Amor</h3>
-                <div class="form-group"><label>Texto final:</label><textarea id="cfg-final-letter" rows="5" oninput="applyConfig()">¡Felicidades mi agrónomo hermoso! 💚
-
-Completaste los 7 laberintos extremos, escapaste de los escarabajos acosadores que te regresaban al nivel 4, rescataste a la granja y me los entregaste en mi propio santuario. Espero te haya gustado tanto como a mi, de verdad jaja.
-
-Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de campo. Siempre te lo digo pero nunca será suficiente, te agardezco mucho todo y lo feliz que me haces, eres el mejooor de verdad, estoy tan emocionada por verte y espero que tu también. ¡Te amoteee muchísimo! </textarea></div>
-            </div>
-        </div>
-
-        <button onclick="exportCustomizedGame()" class="btn-pixel" style="width:100%; margin-top:10px; background-color:#ff5722; border-color:#e65100;">💾 DESCARGAR JUEGO FINAL</button>
-    </div>
-
     <script>
-        let config = { boyfriendName: "Juanin", lockCode: "1210", lvl1: "", lvl2: "", lvl3: "", lvl4: "", lvl5: "", lvl6: "", lvl7: "", finalLetter: "" };
+        let config = { 
+            boyfriendName: "Juanin", 
+            lockCode: "1210", 
+            lvl1: "¡Analizaste el Girasol ! Su fotosíntesis está perfecta. Descubres una pista: 'Para tu regalo final, primero debes realizar un rescate botánico en los viveros...'", 
+            lvl2: "¡Cruzaste la Parcela Trabadita esquivando plagas! Notas un cartel en el piso: '¡Alerta! Se reportan animales de granja perdidos en los sectores avanzados de conservación...'", 
+            lvl3: "¡Buen muestreo de manzanas neón! Una nota amarrada a la rama dice: '¡Por favor Juanin, el siguiente sector está lleno de plagas y los animales necesitan tu ayuda urgente!'", 
+            lvl4: "¡Increíble, salvaste a la ovejita, la vaca y el pollito! Pero ten cuidado: 'Los escarabajos gigantes mutados están furiosos y los perseguirán en los próximos mapas...'", 
+            lvl5: "¡Uff, ese escarabajo gigante acosador corría pesadísimo tras de ti! Por suerte lograste mantener a salvo a los animales. Cuidalos muchisimo amof ¡Ya casi llegas al santuario!", 
+            lvl6: "¡Dios mío, qué locura de escape! Burlaste a los dos bichos acosadores del lago sin que te atraparan. ¡El puente al santuario ambiental de Ale se ha abierto por fin!", 
+            lvl7: "¡Hola mi vida! Me da tanta felicidad que hayas cruzado los laberintos y salvado a los animales de las plagas. ¡Eres mi favorito en el universo! La clave que ocuparás para la siguiente pantalla es: 1210... Te amoteee corazón de melón. 🥰🌱", 
+            finalLetter: "¡Felicidades mi agrónomo hermoso! 💚\n\nCompletaste los 7 laberintos extremos, escapaste de los escarabajos acosadores que te regresaba al nivel 4, rescataste a la granja y me los entregaste en mi propio santuario. Espero te haya gustado tanto como a mi, de verdad jaja.\n\nTe hice este juego complicado porque sé lo dedicado que eres y tu profesión de campo. Siempre te lo digo pero nunca será suficiente, te agardezco mucho todo y lo feliz que me haces, eres el mejooor de verdad, estoy tan emocionada por verte y espero que tu también. ¡Te amoteee muchísimo! " 
+        };
         let gameState = { currentLevel: 1, gameActive: false, keysPressed: {}, dialogActive: false, levelComplete: false, animalsCaught: 0 };
         const canvas = document.getElementById("gameCanvas"); const ctx = canvas.getContext("2d");
 
         let player = { x: 30, y: 45, width: 20, height: 30, speed: 3.5, direction: 'down', animFrame: 0, animTimer: 0 };
         let targetPlant = { x: 530, y: 200, width: 30, height: 40 };
         
-        let walls = [];
-        let hazards = [];  
-        let animals = [];  
-        let sceneryFlowers = [];
-
-        function applyConfig() {
-            config.boyfriendName = document.getElementById("cfg-name-boyfriend").value;
-            config.lockCode = document.getElementById("cfg-lock-code").value.padEnd(4, '0').slice(0, 4);
-            config.lvl1 = document.getElementById("cfg-lvl1").value; config.lvl2 = document.getElementById("cfg-lvl2").value;
-            config.lvl3 = document.getElementById("cfg-lvl3").value; config.lvl4 = document.getElementById("cfg-lvl4").value;
-            config.lvl5 = document.getElementById("cfg-lvl5").value; config.lvl6 = document.getElementById("cfg-lvl6").value;
-            config.lvl7 = document.getElementById("cfg-lvl7").value; config.finalLetter = document.getElementById("cfg-final-letter").value;
-
-            document.getElementById("lbl-novio-intro").innerText = config.boyfriendName;
-            document.getElementById("display-final-letter").innerText = config.finalLetter;
-            updateScoreUI();
-        }
-
-        function updateScoreUI() {
-            if (gameState.currentLevel === 4) {
-                document.getElementById("game-score").innerText = `ANIMALES: ${gameState.animalsCaught}/3`;
-            } else {
-                document.getElementById("game-score").innerText = `MAPA: ${gameState.currentLevel}/7`;
-            }
-        }
+        let walls = []; let hazards = []; let animals = []; let sceneryFlowers = [];
 
         function startGame() {
             document.getElementById("screen-intro").classList.remove("active");
@@ -343,92 +282,62 @@ Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de
         }
 
         function loadLevel(num) {
-            gameState.currentLevel = num;
-            gameState.levelComplete = false;
+            gameState.currentLevel = num; gameState.levelComplete = false;
             document.getElementById("level-complete-overlay").style.display = "none";
-            document.getElementById("dialog-box").style.display = "none";
-            gameState.dialogActive = false;
-            
+            document.getElementById("dialog-box").style.display = "none"; gameState.dialogActive = false;
             player.x = 35; player.y = 45; player.direction = 'down';
             walls = []; hazards = []; animals = []; sceneryFlowers = [];
             if(num < 4) gameState.animalsCaught = 0; 
 
             const mapTitles = {
-                1: "NIVEL 1: EL HUERTO 🌻",
-                2: "NIVEL 2: LA PARCELA 🪵",
-                3: "NIVEL 3: EL INVERNADERO ENREDADO 🍎",
-                4: "NIVEL 4: ¡RECOLECTA LOS ANIMALES! 🐄🐑🐓",
-                5: "NIVEL 5: ¡ALERTA! ¡UN BICHO TE PERSIGUE! 🚨",
-                6: "NIVEL 6: ¡DOS BICHOS TE ACOSAN! 💀",
-                7: "NIVEL 7: EL SANTUARIO DE Ale🌿🌸"
+                1: "NIVEL 1: EL HUERTO 🌻", 2: "NIVEL 2: LA PARCELA 🪵", 3: "NIVEL 3: EL INVERNADERO ENREDADO 🍎",
+                4: "NIVEL 4: ¡RECOLECTA LOS ANIMALES! 🐄🐑🐓", 5: "NIVEL 5: ¡ALERTA! ¡UN BICHO TE PERSIGUE! 🚨",
+                6: "NIVEL 6: ¡DOS BICHOS TE ACOSAN! 💀", 7: "NIVEL 7: EL SANTUARIO DE TU Ale 🌿🌸"
             };
             document.getElementById("game-level-title").innerText = mapTitles[num];
 
             if (num === 1) {
                 targetPlant.x = 510; targetPlant.y = 190;
-                walls.push({x: 180, y: 0, w: 40, h: 140, c: "#2e7d32"});
-                walls.push({x: 360, y: 110, w: 40, h: 150, c: "#2e7d32"});
+                walls.push({x: 180, y: 0, w: 40, h: 140, c: "#2e7d32"}); walls.push({x: 360, y: 110, w: 40, h: 150, c: "#2e7d32"});
                 hazards.push({x: 230, y: 60, w: 14, h: 14, vx: 2, vy: 0, minX: 230, maxX: 350, follower: false});
             } else if (num === 2) {
                 targetPlant.x = 510; targetPlant.y = 45;
-                walls.push({x: 130, y: 100, w: 180, h: 30, c: "#8d6e63"});
-                walls.push({x: 320, y: 0, w: 35, h: 150, c: "#8d6e63"});
-                walls.push({x: 150, y: 210, w: 290, h: 30, c: "#8d6e63"});
+                walls.push({x: 130, y: 100, w: 180, h: 30, c: "#8d6e63"}); walls.push({x: 320, y: 0, w: 35, h: 150, c: "#8d6e63"}); walls.push({x: 150, y: 210, w: 290, h: 30, c: "#8d6e63"});
                 hazards.push({x: 30, y: 160, w: 14, h: 14, vx: 2.5, vy: 0, minX: 20, maxX: 120, follower: false});
             } else if (num === 3) {
                 targetPlant.x = 510; targetPlant.y = 190;
-                walls.push({x: 110, y: 0, w: 35, h: 170, c: "#1565c0"});
-                walls.push({x: 230, y: 90, w: 35, h: 170, c: "#1565c0"});
-                walls.push({x: 360, y: 0, w: 35, h: 170, c: "#1565c0"});
+                walls.push({x: 110, y: 0, w: 35, h: 170, c: "#1565c0"}); walls.push({x: 230, y: 90, w: 35, h: 170, c: "#1565c0"}); walls.push({x: 360, y: 0, w: 35, h: 170, c: "#1565c0"});
                 hazards.push({x: 160, y: 40, w: 14, h: 14, vx: 0, vy: 3, minY: 40, maxY: 220, follower: false});
             } else if (num === 4) {
                 targetPlant.x = 520; targetPlant.y = 200; 
-                walls.push({x: 150, y: 0, w: 30, h: 180, c: "#558b2f"});
-                walls.push({x: 350, y: 90, w: 30, h: 170, c: "#558b2f"});
-                animals.push({x: 220, y: 50, w: 20, h: 20, t: "🐑", caught: false});
-                animals.push({x: 100, y: 210, w: 20, h: 20, t: "🐄", caught: false});
-                animals.push({x: 480, y: 40, w: 18, h: 18, t: "🐓", caught: false});
+                walls.push({x: 150, y: 0, w: 30, h: 180, c: "#558b2f"}); walls.push({x: 350, y: 90, w: 30, h: 170, c: "#558b2f"});
+                animals.push({x: 220, y: 50, w: 20, h: 20, t: "🐑", caught: false}); animals.push({x: 100, y: 210, w: 20, h: 20, t: "🐄", caught: false}); animals.push({x: 480, y: 40, w: 18, h: 18, t: "🐓", caught: false});
                 hazards.push({x: 200, y: 140, w: 14, h: 14, vx: 2, vy: 0, minX: 190, maxX: 330, follower: false});
             } else if (num === 5) {
                 targetPlant.x = 520; targetPlant.y = 120;
-                walls.push({x: 120, y: 0, w: 40, h: 80, c: "#37474f"});
-                walls.push({x: 280, y: 0, w: 40, h: 80, c: "#37474f"});
-                walls.push({x: 120, y: 180, w: 40, h: 80, c: "#37474f"});
-                walls.push({x: 280, y: 180, w: 40, h: 80, c: "#37474f"});
-                walls.push({x: 180, y: 115, w: 180, h: 30, c: "#37474f"});
+                walls.push({x: 120, y: 0, w: 40, h: 80, c: "#37474f"}); walls.push({x: 280, y: 0, w: 40, h: 80, c: "#37474f"}); walls.push({x: 120, y: 180, w: 40, h: 80, c: "#37474f"}); walls.push({x: 280, y: 180, w: 40, h: 80, c: "#37474f"}); walls.push({x: 180, y: 115, w: 180, h: 30, c: "#37474f"});
                 hazards.push({x: 520, y: 40, w: 16, h: 16, vx: 0, vy: 0, speed: 1.15, follower: true});
             } else if (num === 6) {
                 targetPlant.x = 520; targetPlant.y = 110;
-                walls.push({x: 80, y: 0, w: 40, h: 195, c: "#00695c"});
-                walls.push({x: 190, y: 65, w: 40, h: 195, c: "#00695c"});
-                walls.push({x: 300, y: 0, w: 40, h: 195, c: "#00695c"});
-                walls.push({x: 410, y: 65, w: 40, h: 195, c: "#00695c"});
-                hazards.push({x: 520, y: 35, w: 16, h: 16, vx: 0, vy: 0, speed: 1.1, follower: true});
-                hazards.push({x: 520, y: 220, w: 16, h: 16, vx: 0, vy: 0, speed: 1.0, follower: true});
+                walls.push({x: 80, y: 0, w: 40, h: 195, c: "#00695c"}); walls.push({x: 190, y: 65, w: 40, h: 195, c: "#00695c"}); walls.push({x: 300, y: 0, w: 40, h: 195, c: "#00695c"}); walls.push({x: 410, y: 65, w: 40, h: 195, c: "#00695c"});
+                hazards.push({x: 520, y: 35, w: 16, h: 16, vx: 0, vy: 0, speed: 1.1, follower: true}); hazards.push({x: 520, y: 220, w: 16, h: 16, vx: 0, vy: 0, speed: 1.0, follower: true});
             } else if (num === 7) {
-                targetPlant.x = 500; targetPlant.y = 115;
-                hazards = []; 
+                targetPlant.x = 500; targetPlant.y = 115; hazards = []; 
                 for(let i=0; i<35; i++) {
-                    sceneryFlowers.push({
-                        x: Math.random() * 420 + 40,
-                        y: Math.random() * 180 + 45,
-                        type: ['🌸', '🌻', '🌷', '🌿'][Math.floor(Math.random()*5)]
-                    });
+                    sceneryFlowers.push({ x: Math.random() * 420 + 40, y: Math.random() * 180 + 45, type: ['🌸', '🌻', '🌷', '🌿'][Math.floor(Math.random()*5)] });
                 }
             }
-            updateScoreUI();
+            if (gameState.currentLevel === 4) { document.getElementById("game-score").innerText = `ANIMALES: ${gameState.animalsCaught}/3`; }
+            else { document.getElementById("game-score").innerText = `MAPA: ${gameState.currentLevel}/7`; }
         }
 
         function gameLoop() {
             if (!gameState.gameActive) return;
-            update();
-            render();
-            requestAnimationFrame(gameLoop);
+            update(); render(); requestAnimationFrame(gameLoop);
         }
 
         function update() {
             if (gameState.dialogActive || gameState.levelComplete) return;
-
             let vx = 0; let vy = 0;
             if (gameState.keysPressed['up']) { vy = -player.speed; player.direction = 'up'; }
             if (gameState.keysPressed['down']) { vy = player.speed; player.direction = 'down'; }
@@ -437,35 +346,26 @@ Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de
 
             player.x += vx; if (checkWallCollision(player.x, player.y)) player.x -= vx;
             player.y += vy; if (checkWallCollision(player.x, player.y)) player.y -= vy;
-            
             player.x = Math.max(5, Math.min(canvas.width - player.width - 5, player.x));
             player.y = Math.max(35, Math.min(canvas.height - player.height - 5, player.y));
 
             if (gameState.currentLevel !== 7) {
                 hazards.forEach(h => {
                     if (h.follower) {
-                        let dx = player.x - h.x; let dy = player.y - h.y;
-                        let dist = Math.sqrt(dx*dx + dy*dy);
+                        let dx = player.x - h.x; let dy = player.y - h.y; let dist = Math.sqrt(dx*dx + dy*dy);
                         if (dist > 1) {
-                            let h_vx = (dx / dist) * h.speed;
-                            let h_vy = (dy / dist) * h.speed;
-                            
-                            h.x += h_vx;
-                            if (checkEntityWallCollision(h)) h.x -= h_vx;
-                            
-                            h.y += h_vy;
-                            if (checkEntityWallCollision(h)) h.y -= h_vy;
+                            let h_vx = (dx / dist) * h.speed; let h_vy = (dy / dist) * h.speed;
+                            h.x += h_vx; if (checkEntityWallCollision(h)) h.x -= h_vx;
+                            h.y += h_vy; if (checkEntityWallCollision(h)) h.y -= h_vy;
                         }
                     } else {
                         if (h.vx !== 0) { h.x += h.vx; if (h.x <= h.minX || h.x >= h.maxX) h.vx *= -1; }
                         if (h.vy !== 0) { h.y += h.vy; if (h.y <= h.minY || h.y >= h.maxY) h.vy *= -1; }
                     }
-
                     if (player.x < h.x + h.w && player.x + player.width > h.x && player.y < h.y + h.h && player.y + player.height > h.y) {
                         if (gameState.currentLevel === 6) {
                             showDialog("¡¡NOOOOOO!! ¡Los escarabajos del lago los rodearon! Los animales se asustaron... ¡DEBES REINICIAR DESDE EL NIVEL 4!");
-                            gameState.animalsCaught = 0;
-                            loadLevel(4);
+                            gameState.animalsCaught = 0; loadLevel(4);
                         } else {
                             showDialog(h.follower ? "¡Ay! El escarabajo acosador te atrapó. Usa los muros como escondite." : "¡Ay! Un escarabajo te picó la bota. Regresas al inicio.");
                             loadLevel(gameState.currentLevel); 
@@ -477,38 +377,32 @@ Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de
             if (gameState.currentLevel === 4) {
                 animals.forEach(a => {
                     if (!a.caught && player.x < a.x + a.w && player.x + player.width > a.x && player.y < a.y + a.h && player.y + player.height > a.y) {
-                        a.caught = true;
-                        gameState.animalsCaught++;
-                        updateScoreUI();
+                        a.caught = true; gameState.animalsCaught++;
+                        document.getElementById("game-score").innerText = `ANIMALES: ${gameState.animalsCaught}/3`;
                     }
                 });
             }
-
             if (vx !== 0 || vy !== 0) {
-                player.animTimer++;
-                if (player.animTimer > 7) { player.animFrame = (player.animFrame + 1) % 4; player.animTimer = 0; }
+                player.animTimer++; if (player.animTimer > 7) { player.animFrame = (player.animFrame + 1) % 4; player.animTimer = 0; }
             } else { player.animFrame = 0; }
         }
 
         function checkWallCollision(px, py) {
             for (let i = 0; i < walls.length; i++) {
-                let w = walls[i];
-                if (px < w.x + w.w && px + player.width > w.x && py < w.y + w.h && py + player.height > w.y) return true;
+                let w = walls[i]; if (px < w.x + w.w && px + player.width > w.x && py < w.y + w.h && py + player.height > w.y) return true;
             }
             return false;
         }
 
         function checkEntityWallCollision(ent) {
             for (let i = 0; i < walls.length; i++) {
-                let w = walls[i];
-                if (ent.x < w.x + w.w && ent.x + ent.w > w.x && ent.y < w.y + w.h && ent.y + ent.h > w.y) return true;
+                let w = walls[i]; if (ent.x < w.x + w.w && ent.x + ent.w > w.x && ent.y < w.y + w.h && ent.y + ent.h > w.y) return true;
             }
             return false;
         }
 
         function render() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
             if (gameState.currentLevel === 1) ctx.fillStyle = "#a1e887";
             else if (gameState.currentLevel === 2) ctx.fillStyle = "#ffcc80";
             else if (gameState.currentLevel === 3) ctx.fillStyle = "#80deea";
@@ -518,10 +412,7 @@ Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de
             else if (gameState.currentLevel === 7) ctx.fillStyle = "#f8bbd0"; 
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            if (gameState.currentLevel === 7) {
-                sceneryFlowers.forEach(f => { ctx.font = "14px Arial"; ctx.fillText(f.type, f.x, f.y); });
-            }
-
+            if (gameState.currentLevel === 7) { sceneryFlowers.forEach(f => { ctx.font = "14px Arial"; ctx.fillText(f.type, f.x, f.y); }); }
             walls.forEach(w => {
                 ctx.fillStyle = w.c; ctx.fillRect(w.x, w.y, w.w, w.h);
                 ctx.strokeStyle = "rgba(0,0,0,0.15)"; ctx.lineWidth = 3; ctx.strokeRect(w.x+2, w.y+2, w.w-4, w.h-4);
@@ -529,37 +420,24 @@ Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de
 
             if (gameState.currentLevel !== 7) {
                 hazards.forEach(h => {
-                    ctx.fillStyle = h.follower ? "#4a0000" : "#b71c1c"; 
-                    ctx.fillRect(h.x, h.y, h.w, h.h);
+                    ctx.fillStyle = h.follower ? "#4a0000" : "#b71c1c"; ctx.fillRect(h.x, h.y, h.w, h.h);
                     ctx.fillStyle = "#000"; ctx.fillRect(h.x + 2, h.y + 2, 3, 3); ctx.fillRect(h.x + h.w - 5, h.y + 2, 3, 3);
                 });
             }
 
-            if (gameState.currentLevel === 4) {
-                animals.forEach(a => { if (!a.caught) { ctx.font = "16px Arial"; ctx.fillText(a.t, a.x, a.y + 14); } });
-            }
-
-            if (gameState.currentLevel >= 5 && gameState.animalsCaught >= 3) {
-                ctx.font = "12px Arial"; ctx.fillText("🐄🐑🐓", player.x - 36, player.y + 16);
-            }
+            if (gameState.currentLevel === 4) { animals.forEach(a => { if (!a.caught) { ctx.font = "16px Arial"; ctx.fillText(a.t, a.x, a.y + 14); } }); }
+            if (gameState.currentLevel >= 5 && gameState.animalsCaught >= 3) { ctx.font = "12px Arial"; ctx.fillText("🐄🐑🐓", player.x - 36, player.y + 16); }
 
             if (gameState.currentLevel === 1) {
                 ctx.fillStyle = "#8d6e63"; ctx.fillRect(targetPlant.x + 12, targetPlant.y + 15, 5, 25);
                 ctx.fillStyle = "#ffeb3b"; ctx.beginPath(); ctx.arc(targetPlant.x + 14, targetPlant.y + 15, 14, 0, Math.PI*2); ctx.fill();
-            } else if (gameState.currentLevel === 2) {
-                ctx.fillStyle = "#e91e63"; ctx.beginPath(); ctx.arc(targetPlant.x + 14, targetPlant.y + 16, 13, 0, Math.PI*2); ctx.fill();
-            } else if (gameState.currentLevel === 3) {
-                ctx.fillStyle = "#ff1744"; ctx.beginPath(); ctx.arc(targetPlant.x + 14, targetPlant.y + 16, 13, 0, Math.PI*2); ctx.fill();
-            } else if (gameState.currentLevel === 4) {
-                ctx.fillStyle = "#ffffff"; ctx.beginPath(); ctx.arc(targetPlant.x + 14, targetPlant.y + 16, 14, 0, Math.PI, true); ctx.fill(); 
-            } else if (gameState.currentLevel === 5) {
-                ctx.fillStyle = "#9c27b0"; ctx.beginPath(); ctx.arc(targetPlant.x + 14, targetPlant.y + 16, 12, 0, Math.PI*2); ctx.fill();
-            } else if (gameState.currentLevel === 6) {
-                ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(targetPlant.x + 14, targetPlant.y + 16, 13, 0, Math.PI*2); ctx.fill();
+            } else if (gameState.currentLevel === 2) { ctx.fillStyle = "#e91e63"; ctx.beginPath(); ctx.arc(targetPlant.x + 14, targetPlant.y + 16, 13, 0, Math.PI*2); ctx.fill();
+            } else if (gameState.currentLevel === 3) { ctx.fillStyle = "#ff1744"; ctx.beginPath(); ctx.arc(targetPlant.x + 14, targetPlant.y + 16, 13, 0, Math.PI*2); ctx.fill();
+            } else if (gameState.currentLevel === 4) { ctx.fillStyle = "#ffffff"; ctx.beginPath(); ctx.arc(targetPlant.x + 14, targetPlant.y + 16, 14, 0, Math.PI, true); ctx.fill(); 
+            } else if (gameState.currentLevel === 5) { ctx.fillStyle = "#9c27b0"; ctx.beginPath(); ctx.arc(targetPlant.x + 14, targetPlant.y + 16, 12, 0, Math.PI*2); ctx.fill();
+            } else if (gameState.currentLevel === 6) { ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(targetPlant.x + 14, targetPlant.y + 16, 13, 0, Math.PI*2); ctx.fill();
             }
-            if (gameState.currentLevel !== 7) {
-                ctx.fillStyle = "#111"; ctx.font = "bold 10px Arial"; ctx.fillText("🔍 VER", targetPlant.x - 5, targetPlant.y - 8);
-            }
+            if (gameState.currentLevel !== 7) { ctx.fillStyle = "#111"; ctx.font = "bold 10px Arial"; ctx.fillText("🔍 VER", targetPlant.x - 5, targetPlant.y - 8); }
 
             if (gameState.currentLevel === 7) {
                 ctx.save(); ctx.translate(targetPlant.x, targetPlant.y);
@@ -568,9 +446,8 @@ Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de
                 ctx.fillStyle = "#d7a15c"; ctx.fillRect(4, 3, player.width - 8, 10);
                 ctx.fillStyle = "#111"; ctx.fillRect(6, 6, 2, 2); ctx.fillRect(player.width - 8, 6, 2, 2); 
                 ctx.fillStyle = "#111111"; ctx.fillRect(2, 13, player.width - 4, 15);
-                ctx.fillStyle = "#000000"; ctx.fillRect(4, 13, player.width - 8, 2); 
-                ctx.restore();
-                ctx.fillStyle = "#c2185b"; ctx.font = "bold 10px Arial"; ctx.fillText("Ale", targetPlant.x - 14, targetPlant.y - 12);
+                ctx.fillStyle = "#000000"; ctx.fillRect(4, 13, player.width - 8, 2); ctx.restore();
+                ctx.fillStyle = "#c2185b"; ctx.font = "bold 10px Arial"; ctx.fillText("Alee", targetPlant.x - 14, targetPlant.y - 12);
             }
 
             ctx.save(); ctx.translate(player.x, player.y);
@@ -595,25 +472,20 @@ Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de
         function handleActionButton() {
             if (gameState.dialogActive) { closeDialog(); return; }
             if (gameState.currentLevel === 4 && gameState.animalsCaught < 3) {
-                showDialog("¡Aún quedan animales perdidos! Búscalos entre los arbustos verdes.");
-                return;
+                showDialog("¡Aún quedan animales perdidos! Búscalos entre los arbustos verdes."); return;
             }
-
             let dx = Math.abs((player.x + player.width/2) - (targetPlant.x + targetPlant.width/2));
             let dy = Math.abs((player.y + player.height/2) - (targetPlant.y + targetPlant.height/2));
-
             if (dx < 45 && dy < 45) {
                 let text = "";
                 if (gameState.currentLevel === 1) text = config.lvl1; if (gameState.currentLevel === 2) text = config.lvl2;
                 if (gameState.currentLevel === 3) text = config.lvl3; if (gameState.currentLevel === 4) text = config.lvl4;
                 if (gameState.currentLevel === 5) text = config.lvl5; if (gameState.currentLevel === 6) text = config.lvl6;
                 if (gameState.currentLevel === 7) text = config.lvl7;
-
                 document.getElementById("victory-header-txt").innerText = gameState.currentLevel === 7 ? "¡ABRAZO COMPLETO! 🥰" : "¡HISTORIA REVELADA! 🌟";
-                showDialog(text);
-                gameState.levelComplete = true;
+                showDialog(text); gameState.levelComplete = true;
             } else {
-                showDialog(gameState.currentLevel === 7 ? "¡Camina hacia tu novia y dale revisar!" : "¡Examina el objetivo botánico de la derecha!");
+                showDialog(gameState.currentLevel === 7 ? "¡Camina hacia Ale y dale revisar!" : "¡Examina el objetivo botánico de la derecha!");
             }
         }
 
@@ -628,17 +500,14 @@ Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de
 
         function loadNextLevel() {
             if (gameState.currentLevel < 7) { loadLevel(gameState.currentLevel + 1); } 
-            else {
-                document.getElementById("screen-game").classList.remove("active");
-                document.getElementById("screen-lock").classList.add("active");
-            }
+            else { document.getElementById("screen-game").classList.remove("active"); document.getElementById("screen-lock").classList.add("active"); }
         }
 
         function verifyUnlockCode() {
             let code = document.getElementById("code-digit-1").value + document.getElementById("code-digit-2").value + document.getElementById("code-digit-3").value + document.getElementById("code-digit-4").value;
             if (code === config.lockCode) {
-                document.getElementById("screen-lock").classList.remove("active");
-                document.getElementById("screen-letter").classList.add("active");
+                document.getElementById("screen-lock").classList.remove("active"); document.getElementById("screen-letter").classList.add("active");
+                document.getElementById("display-final-letter").innerText = config.finalLetter;
             } else {
                 document.getElementById("lock-error-msg").style.display = "block";
                 document.getElementById("code-digit-1").value = ""; document.getElementById("code-digit-2").value = ""; document.getElementById("code-digit-3").value = ""; document.getElementById("code-digit-4").value = "";
@@ -671,29 +540,6 @@ Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de
             if (key === 'a' || key === 'A' || key === 'ArrowLeft') gameState.keysPressed['left'] = false;
             if (key === 'd' || key === 'D' || key === 'ArrowRight') gameState.keysPressed['right'] = false;
         });
-
-        applyConfig();
-    </script>
-
-    <script>
-        function exportCustomizedGame() {
-            applyConfig(); 
-            let configPanel = document.getElementById("main-config-panel");
-            configPanel.style.display = "none";
-            let mainHTML = document.documentElement.outerHTML;
-            configPanel.style.display = "block";
-            let cleanHTML = mainHTML.replace('id="main-config-panel"', 'id="main-config-panel" style="display:none;"');
-
-            let blob = new Blob([cleanHTML], { type: "text/html" });
-            let url = URL.createObjectURL(blob);
-            let a = document.createElement("a");
-            a.href = url;
-            a.download = `Juego_Final_Juanin.html`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }
     </script>
 </body>
 </html>
