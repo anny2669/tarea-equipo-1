@@ -1,6 +1,8 @@
-<html lang="es"><head>
+<!DOCTYPE html>
+<html lang="es">
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Aventura Imposible: Juanin Juan Harry 💚</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -11,42 +13,54 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
+            padding: 10px;
             min-height: 100vh;
         }
         @media (min-width: 902px) {
-            body { flex-direction: row; justify-content: center; align-items: flex-start; gap: 30px; }
+            body { flex-direction: row; justify-content: center; align-items: flex-start; gap: 30px; padding: 20px; }
         }
 
-        /* CONSOLA DE VIDEOJUEGO */
+        /* CONSOLA DE VIDEOJUEGO RESPONSIVA */
         .console-container {
             background-color: #ffd54f;
             border: 5px solid #ff8f00;
             border-radius: 16px;
-            padding: 20px;
+            padding: 12px;
             width: 100%;
-            max-width: 640px;
-            box-shadow: 0 12px 0 #ff6f00;
-            margin-bottom: 20px;
+            max-width: 450px;
+            box-shadow: 0 8px 0 #ff6f00;
+            margin-bottom: 10px;
         }
+        @media (min-width: 600px) {
+            .console-container { padding: 20px; max-width: 640px; box-shadow: 0 12px 0 #ff6f00; }
+        }
+
         .console-header {
             text-align: center;
             border-bottom: 4px dashed #ff8f00;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
+            padding-bottom: 6px;
+            margin-bottom: 10px;
         }
-        .console-header h1 { font-size: 24px; color: #d84315; text-shadow: 2px 2px 0 #fff; }
-        .console-header p { font-size: 13px; color: #5d4037; font-weight: bold; }
+        .console-header h1 { font-size: 20px; color: #d84315; text-shadow: 2px 2px 0 #fff; }
+        .console-header p { font-size: 11px; color: #5d4037; font-weight: bold; }
 
-        /* PANTALLA CONTENEDORA PRINCIPAL */
+        @media (min-width: 600px) {
+            .console-header h1 { font-size: 24px; }
+            .console-header p { font-size: 13px; }
+        }
+
+        /* PANTALLA AJUSTADA PARA CELULARES */
         .screen-wrapper {
             position: relative;
             width: 100%;
-            height: 380px;
+            height: 280px;
             background-color: #000;
             border: 4px solid #5d4037;
             border-radius: 8px;
             overflow: hidden;
+        }
+        @media (min-width: 600px) {
+            .screen-wrapper { height: 380px; }
         }
 
         /* SUB-PANTALLAS ENCAPSULADAS */
@@ -55,82 +69,101 @@
             top: 0; left: 0; width: 100%; height: 100%;
             display: none; flex-direction: column;
             justify-content: space-between; align-items: center;
-            padding: 20px; text-align: center;
+            padding: 15px; text-align: center;
         }
         .game-screen.active { display: flex; }
 
         #screen-intro {
             background-color: #009688;
-            color: white; justify-content: center; gap: 20px;
+            color: white; justify-content: center; gap: 15px;
         }
-        #screen-intro h2 { color: #fff176; font-size: 22px; text-shadow: 2px 2px 0 #004d40; }
+        #screen-intro h2 { color: #fff176; font-size: 18px; text-shadow: 2px 2px 0 #004d40; }
+        @media (min-width: 600px) { #screen-intro h2 { font-size: 22px; } }
+        
         #screen-game { padding: 0; background-color: #4caf50; }
         
         .game-bar {
             width: 100%; background-color: #1b5e20; color: white;
-            padding: 8px 12px; font-size: 12px;
+            padding: 6px 12px; font-size: 11px;
             display: flex; justify-content: space-between; font-weight: bold;
         }
         .canvas-container { position: relative; width: 100%; flex-grow: 1; }
         canvas { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
 
-        /* CONTROLES VIRTUALES */
+        /* CONTROLES VIRTUALES COMPACTOS */
         .controls-bar {
-            width: 100%; background-color: #fff9c4; padding: 12px;
+            width: 100%; background-color: #fff9c4; padding: 8px;
             display: flex; justify-content: space-between; align-items: center;
             border-top: 4px solid #5d4037; user-select: none;
         }
-        .pad-digital { display: grid; grid-template-columns: repeat(3, 36px); grid-template-rows: repeat(3, 30px); gap: 3px; }
+        .pad-digital { display: grid; grid-template-columns: repeat(3, 32px); grid-template-rows: repeat(3, 26px); gap: 2px; }
+        @media (min-width: 600px) {
+            .pad-digital { grid-template-columns: repeat(3, 36px); grid-template-rows: repeat(3, 30px); gap: 3px; }
+        }
         .pad-btn {
             background-color: #ff5722; color: white; border: 2px solid #d84315;
-            border-radius: 6px; font-weight: bold; font-size: 14px; cursor: pointer;
-            box-shadow: 0 3px 0 #d84315;
+            border-radius: 6px; font-weight: bold; font-size: 12px; cursor: pointer;
+            box-shadow: 0 2px 0 #d84315;
         }
-        .action-btn-container { padding-right: 20px; }
+        .action-btn-container { padding-right: 5px; }
         .action-btn {
-            width: 75px; height: 75px; background-color: #4caf50;
+            width: 65px; height: 65px; background-color: #4caf50;
             border: 4px solid #1b5e20; border-radius: 50%; color: white;
-            font-weight: bold; font-size: 11px; cursor: pointer;
-            box-shadow: 0 5px 0 #1b5e20; outline: none;
+            font-weight: bold; font-size: 10px; cursor: pointer;
+            box-shadow: 0 4px 0 #1b5e20; outline: none;
+        }
+        @media (min-width: 600px) {
+            .action-btn { width: 75px; height: 75px; font-size: 11px; box-shadow: 0 5px 0 #1b5e20; }
+            .action-btn-container { padding-right: 20px; }
         }
         .action-btn:active { transform: translateY(4px); box-shadow: 0 1px 0 #1b5e20; }
 
         /* DIÁLOGOS Y VICTORIA */
         .dialog-box {
-            position: absolute; bottom: 12px; left: 12px; right: 12px;
+            position: absolute; bottom: 8px; left: 8px; right: 8px;
             background-color: #fffde7; border: 3px solid #ffb300;
-            border-radius: 8px; padding: 12px; text-align: left;
-            font-size: 13px; font-weight: bold; color: #5d4037; z-index: 10;
+            border-radius: 8px; padding: 10px; text-align: left;
+            font-size: 11px; font-weight: bold; color: #5d4037; z-index: 10;
         }
+        @media (min-width: 600px) { .dialog-box { font-size: 13px; padding: 12px; bottom: 12px; left: 12px; right: 12px; } }
         .dialog-close {
-            float: right; margin-top: 5px; background-color: #e91e63;
-            color: white; border: none; padding: 4px 10px; border-radius: 4px; cursor: pointer;
+            float: right; margin-top: 3px; background-color: #e91e63;
+            color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer;
         }
         .overlay-victory {
             position: absolute; inset: 0; background-color: rgba(0,0,0,0.85);
             color: white; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; padding: 20px; z-index: 20;
+            justify-content: center; align-items: center; padding: 15px; z-index: 20;
         }
-        .overlay-victory h3 { color: #ffeb3b; margin-bottom: 10px; font-size: 19px; }
+        .overlay-victory h3 { color: #ffeb3b; margin-bottom: 6px; font-size: 16px; }
+        @media (min-width: 600px) { .overlay-victory h3 { font-size: 19px; margin-bottom: 10px; } }
 
         /* PANTALLA DE TRATO REAL */
-        #screen-lock { background-color: #00796b; color: white; justify-content: center; gap: 15px; }
-        .code-inputs { display: flex; gap: 8px; margin: 10px 0; }
+        #screen-lock { background-color: #00796b; color: white; justify-content: center; gap: 12px; }
+        .code-inputs { display: flex; gap: 6px; margin: 8px 0; }
         .code-inputs input {
-            width: 38px; height: 48px; text-align: center; font-size: 22px;
+            width: 34px; height: 42px; text-align: center; font-size: 18px;
             font-weight: bold; background-color: #fff; color: #e65100;
             border: 3px solid #ffb300; border-radius: 6px;
         }
-        #screen-letter { background-color: #fff5f5; color: #333; padding: 20px; justify-content: flex-start; overflow-y: auto; text-align: left; }
-        .letter-header { width: 100%; text-align: center; border-bottom: 3px dashed #ff80ab; padding-bottom: 10px; margin-bottom: 15px; color: #e91e63; font-size: 18px; font-weight: bold; }
-        .letter-body { font-size: 14px; line-height: 1.6; white-space: pre-wrap; color: #444; flex-grow: 1; width: 100%; }
+        @media (min-width: 600px) {
+            .code-inputs { gap: 8px; margin: 10px 0; }
+            .code-inputs input { width: 38px; height: 48px; font-size: 22px; }
+        }
+        #screen-letter { background-color: #fff5f5; color: #333; padding: 15px; justify-content: flex-start; overflow-y: auto; text-align: left; }
+        .letter-header { width: 100%; text-align: center; border-bottom: 3px dashed #ff80ab; padding-bottom: 8px; margin-bottom: 12px; color: #e91e63; font-size: 16px; font-weight: bold; }
+        @media (min-width: 600px) { .letter-header { font-size: 18px; padding-bottom: 10px; margin-bottom: 15px; } }
+        .letter-body { font-size: 13px; line-height: 1.5; white-space: pre-wrap; color: #444; flex-grow: 1; width: 100%; }
+        @media (min-width: 600px) { .letter-body { font-size: 14px; line-height: 1.6; } }
 
         .btn-pixel {
             background-color: #ff9800; color: white; border: 3px solid #e65100;
-            padding: 10px 24px; font-weight: bold; border-radius: 6px; cursor: pointer;
-            box-shadow: 0 4px 0 #e65100;
+            padding: 8px 18px; font-weight: bold; border-radius: 6px; cursor: pointer;
+            box-shadow: 0 3px 0 #e65100; font-size: 13px;
         }
-        .btn-green { background-color: #4caf50; border-color: #1b5e20; box-shadow: 0 4px 0 #1b5e20; }
+        @media (min-width: 600px) { .btn-pixel { padding: 10px 24px; box-shadow: 0 4px 0 #e65100; font-size: 14px; } }
+        .btn-green { background-color: #4caf50; border-color: #1b5e20; box-shadow: 0 3px 0 #1b5e20; }
+        @media (min-width: 600px) { .btn-green { box-shadow: 0 4px 0 #1b5e20; } }
 
         /* PANEL CONFIGURADOR */
         #main-config-panel {
@@ -150,7 +183,7 @@
 
     <div class="console-container">
         <div class="console-header">
-            <h1>Te amoteee amor, diviertete </h1>
+            <h1>Te amoteeee amor</h1>
             <p>¡Edición Extrema: Historia y Persecución!</p>
         </div>
 
@@ -161,55 +194,55 @@
                     <div style="font-size:10px; color:#fff176; font-weight:bold;">¡ADVERTENCIA: NIVEL 6 REINICIA EL JUEGO DESDE EL NIVEL 4!</div>
                     <h2 style="margin-top:5px;">LA BÚSQUEDA DE LA<br>CLAVE PERDIDA</h2>
                 </div>
-                <div style="background-color:#fff; padding:15px; border-radius:50%; font-size:28px; box-shadow: 0 4px 0 #004d40;">👩‍🌾</div>
+                <div style="background-color:#fff; padding:10px; border-radius:50%; font-size:24px; box-shadow: 0 3px 0 #004d40;">👩‍🌾</div>
                 <button onclick="startGame()" class="btn-pixel">¡INICIAR EL GRAN REGALO!</button>
-                <p style="font-size:12px; font-weight:bold;">Suerte en los laberintos, <span id="lbl-novio-intro" style="color:#fff176;">Juanin</span> 💚</p>
+                <p style="font-size:11px; font-weight:bold;">Suerte en los laberintos, <span id="lbl-novio-intro" style="color:#fff176;">Amor</span> 💚</p>
             </div>
 
             <div id="screen-game" class="game-screen">
                 <div class="game-bar">
-                    <span id="game-level-title">NIVEL 7: EL SANTUARIO DE ALE 🌿🌸</span>
-                    <span id="game-score" style="color:#ffeb3b;">MAPA: 7/7</span>
+                    <span id="game-level-title">NIVEL 1</span>
+                    <span id="game-score" style="color:#ffeb3b;">MAPA: 1/7</span>
                 </div>
                 
                 <div class="canvas-container">
                     <canvas id="gameCanvas" width="600" height="260"></canvas>
                     
-                    <div id="dialog-box" class="dialog-box" style="display: block;">
-                        <span id="dialog-text">¡Hola mi vida! Me da tanta felicidad que hayas cruzado los laberintos y salvado a los animales de las plagas. ¡Eres mi favorito en el universo! La clave que ocuparás para la siguiente pantalla es: 1210... Te amoteee corazón de melón. 🥰🌱</span>
+                    <div id="dialog-box" class="dialog-box" style="display:none;">
+                        <span id="dialog-text">Muestra...</span>
                         <button onclick="closeDialog()" class="dialog-close">OK</button>
                     </div>
 
-                    <div id="level-complete-overlay" class="overlay-victory" style="display: flex;">
-                        <h3 id="victory-header-txt">¡ABRAZO COMPLETO! 🥰</h3>
-                        <p id="level-reward-text">¡Salvaste la granja entera!<br>Introduce la clave para ver tu carta.</p>
-                        <button id="btn-next-step" onclick="loadNextLevel()" class="btn-pixel btn-green" style="padding:8px 20px; font-size:13px; margin-top:10px;">AVANZAR DE NIVEL</button>
+                    <div id="level-complete-overlay" class="overlay-victory" style="display:none;">
+                        <h3 id="victory-header-txt">¡MAPA COMPLETADO! 🌟</h3>
+                        <p id="level-reward-text">Mensaje...</p>
+                        <button id="btn-next-step" onclick="loadNextLevel()" class="btn-pixel btn-green" style="padding:6px 16px; font-size:12px; margin-top:8px;">AVANZAR DE NIVEL</button>
                     </div>
                 </div>
 
                 <div class="controls-bar">
                     <div class="pad-digital">
                         <div></div>
-                        <button onmousedown="startMove('up')" onmouseup="stopMove('up')" ontouchstart="event.preventDefault(); startMove('up')" ontouchend="stopMove('up')" class="pad-btn">▲</button>
+                        <button ontouchstart="event.preventDefault(); startMove('up')" ontouchend="stopMove('up')" onmousedown="startMove('up')" onmouseup="stopMove('up')" class="pad-btn">▲</button>
                         <div></div>
-                        <button onmousedown="startMove('left')" onmouseup="stopMove('left')" ontouchstart="event.preventDefault(); startMove('left')" ontouchend="stopMove('left')" class="pad-btn">◀</button>
+                        <button ontouchstart="event.preventDefault(); startMove('left')" ontouchend="stopMove('left')" onmousedown="startMove('left')" onmouseup="stopMove('left')" class="pad-btn">◀</button>
                         <div style="background:#ffb300; border-radius:4px;"></div>
-                        <button onmousedown="startMove('right')" onmouseup="stopMove('right')" ontouchstart="event.preventDefault(); startMove('right')" ontouchend="stopMove('right')" class="pad-btn">▶</button>
+                        <button ontouchstart="event.preventDefault(); startMove('right')" ontouchend="stopMove('right')" onmousedown="startMove('right')" onmouseup="stopMove('right')" class="pad-btn">▶</button>
                         <div></div>
-                        <button onmousedown="startMove('down')" onmouseup="stopMove('down')" ontouchstart="event.preventDefault(); startMove('down')" ontouchend="stopMove('down')" class="pad-btn">▼</button>
+                        <button ontouchstart="event.preventDefault(); startMove('down')" ontouchend="stopMove('down')" onmousedown="startMove('down')" onmouseup="stopMove('down')" class="pad-btn">▼</button>
                         <div></div>
                     </div>
                     <div class="action-btn-container">
-                        <button onclick="handleActionButton()" class="action-btn">REVISAR<br>(Espacio)</button>
+                        <button ontouchstart="event.preventDefault(); handleActionButton()" onclick="handleActionButton()" class="action-btn">REVISAR<br>(Espacio)</button>
                     </div>
                 </div>
             </div>
 
-            <div id="screen-lock" class="game-screen" style="background-color: #00796b; color: white; justify-content: center; gap: 15px;">
-                <div style="font-size:35px;">🐑🐄🐓🤝❤️</div>
+            <div id="screen-lock" class="game-screen" style="background-color: #00796b; color: white; justify-content: center; gap: 12px;">
+                <div style="font-size:30px;">🐑🐄🐓❤️</div>
                 <h3>¡INVERNADERO BLOQUEADO!</h3>
-                <p style="font-size:12px; padding: 0 15px; line-height: 1.4;">
-                    Introduce el código secreto de 4 dígitos revelado por Ale en el nivel anterior para abrir tu carta:
+                <p style="font-size:11px; padding: 0 10px; line-height: 1.3;">
+                    Introduce el código secreto de 4 dígitos revelado por tu novia en el nivel anterior para abrir tu carta:
                 </p>
                 <div class="code-inputs">
                     <input type="text" id="code-digit-1" maxlength="1" onkeyup="moveFocus(this, 'code-digit-2')">
@@ -223,8 +256,8 @@
 
             <div id="screen-letter" class="game-screen">
                 <div class="letter-header">💝 ¡Carta Desbloqueada! 💝</div>
-                <div id="display-final-letter" class="letter-body">¡Felicidades mi agrónomo hermoso! 💚<br><br>Completaste los 7 laberintos extremos, escapaste de los escarabajos acosadores que te regresaban al nivel 4, rescataste a la granja y me los entregaste en mi propio santuario. Espero te haya gustado tanto como a mi, de verdad jaja.<br><br>Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de campo. Siempre te lo digo pero nunca será suficiente, te agardezco mucho todo y lo feliz que me haces, eres el mejooor de verdad, estoy tan emocionada por verte y espero que tu también. ¡Te amoteee muchísimo! </div>
-                <div style="width:100%; text-align:center; margin-top:10px;">
+                <div id="display-final-letter" class="letter-body">Cargando tu carta...</div>
+                <div style="width:100%; text-align:center; margin-top:8px;">
                     <button onclick="returnToMenu()" class="btn-pixel btn-green" style="padding:5px 15px; font-size:11px;">Jugar de nuevo</button>
                 </div>
             </div>
@@ -232,7 +265,7 @@
         </div>
     </div>
 
-    <div id="main-config-panel" style="display:none;">
+    <div id="main-config-panel">
         <h2>🛠️ Diseñador de 7 Niveles</h2>
         <p class="panel-desc">¡Si los escarabajos del Nivel 6 lo tocan, se reinicia el juego desde el Nivel 4!</p>
         
@@ -324,10 +357,10 @@ Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de
                 1: "NIVEL 1: EL HUERTO 🌻",
                 2: "NIVEL 2: LA PARCELA 🪵",
                 3: "NIVEL 3: EL INVERNADERO ENREDADO 🍎",
-                4: "NIVEL 4: ¡RECOLECTA LOS ANIMALES Y ESQUIVA PLAGAS! 🐄🐑🐓",
-                5: "NIVEL 5: ¡ALERTA! ¡UN ESCARABAJO GIGANTE TE PERSIGUE! 🚨",
-                6: "NIVEL 6: ¡MÁXIMO PELIGRO! ¡DOS BICHOS TE ACOSAN! 💀",
-                7: "NIVEL 7: EL SANTUARIO DE ALE 🌿🌸"
+                4: "NIVEL 4: ¡RECOLECTA LOS ANIMALES! 🐄🐑🐓",
+                5: "NIVEL 5: ¡ALERTA! ¡UN BICHO TE PERSIGUE! 🚨",
+                6: "NIVEL 6: ¡DOS BICHOS TE ACOSAN! 💀",
+                7: "NIVEL 7: EL SANTUARIO DE Ale🌿🌸"
             };
             document.getElementById("game-level-title").innerText = mapTitles[num];
 
@@ -379,7 +412,7 @@ Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de
                     sceneryFlowers.push({
                         x: Math.random() * 420 + 40,
                         y: Math.random() * 180 + 45,
-                        type: ['🌸', '🌻', '🌷', '🌿', '🌱'][Math.floor(Math.random()*5)]
+                        type: ['🌸', '🌻', '🌷', '🌿'][Math.floor(Math.random()*5)]
                     });
                 }
             }
@@ -397,10 +430,10 @@ Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de
             if (gameState.dialogActive || gameState.levelComplete) return;
 
             let vx = 0; let vy = 0;
-            if (gameState.keysPressed['w']) { vy = -player.speed; player.direction = 'up'; }
-            if (gameState.keysPressed['s']) { vy = player.speed; player.direction = 'down'; }
-            if (gameState.keysPressed['a']) { vx = -player.speed; player.direction = 'left'; }
-            if (gameState.keysPressed['d']) { vx = player.speed; player.direction = 'right'; }
+            if (gameState.keysPressed['up']) { vy = -player.speed; player.direction = 'up'; }
+            if (gameState.keysPressed['down']) { vy = player.speed; player.direction = 'down'; }
+            if (gameState.keysPressed['left']) { vx = -player.speed; player.direction = 'left'; }
+            if (gameState.keysPressed['right']) { vx = player.speed; player.direction = 'right'; }
 
             player.x += vx; if (checkWallCollision(player.x, player.y)) player.x -= vx;
             player.y += vy; if (checkWallCollision(player.x, player.y)) player.y -= vy;
@@ -430,18 +463,17 @@ Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de
 
                     if (player.x < h.x + h.w && player.x + player.width > h.x && player.y < h.y + h.h && player.y + player.height > h.y) {
                         if (gameState.currentLevel === 6) {
-                            showDialog("¡¡NOOOOOO!! ¡Los escarabajos del lago los rodearon! Los animales se asustaron y huyeron de regreso al inicio del campo... ¡DEBES REINICIAR DESDE EL NIVEL 4!");
+                            showDialog("¡¡NOOOOOO!! ¡Los escarabajos del lago los rodearon! Los animales se asustaron... ¡DEBES REINICIAR DESDE EL NIVEL 4!");
                             gameState.animalsCaught = 0;
                             loadLevel(4);
                         } else {
-                            showDialog(h.follower ? "¡Ay! El escarabajo acosador te atrapó. Tienes que volver a correr usando los muros como escondite." : "¡Ay! Un escarabajo te picó la bota. Regresas al inicio de este mapa.");
+                            showDialog(h.follower ? "¡Ay! El escarabajo acosador te atrapó. Usa los muros como escondite." : "¡Ay! Un escarabajo te picó la bota. Regresas al inicio.");
                             loadLevel(gameState.currentLevel); 
                         }
                     }
                 });
             }
 
-            // RECOLECCIÓN ANIMALITOS (NIVEL 4)
             if (gameState.currentLevel === 4) {
                 animals.forEach(a => {
                     if (!a.caught && player.x < a.x + a.w && player.x + player.width > a.x && player.y < a.y + a.h && player.y + player.height > a.y) {
@@ -529,7 +561,6 @@ Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de
                 ctx.fillStyle = "#111"; ctx.font = "bold 10px Arial"; ctx.fillText("🔍 VER", targetPlant.x - 5, targetPlant.y - 8);
             }
 
-            // CIENTÍFICA AMBIENTAL (TÚ - MORENA CLARA Y ROPA DARKS / GOTH)
             if (gameState.currentLevel === 7) {
                 ctx.save(); ctx.translate(targetPlant.x, targetPlant.y);
                 ctx.fillStyle = "#d50000"; ctx.fillRect(-3, -4, player.width + 6, 8);
@@ -539,10 +570,9 @@ Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de
                 ctx.fillStyle = "#111111"; ctx.fillRect(2, 13, player.width - 4, 15);
                 ctx.fillStyle = "#000000"; ctx.fillRect(4, 13, player.width - 8, 2); 
                 ctx.restore();
-                ctx.fillStyle = "#c2185b"; ctx.font = "bold 10px Arial"; ctx.fillText("Alee :)", targetPlant.x - 14, targetPlant.y - 12);
+                ctx.fillStyle = "#c2185b"; ctx.font = "bold 10px Arial"; ctx.fillText("Ale", targetPlant.x - 14, targetPlant.y - 12);
             }
 
-            // MUÑEQUITO DEL NOVIO (MORENITO CLARO)
             ctx.save(); ctx.translate(player.x, player.y);
             ctx.fillStyle = "#fbc02d"; ctx.fillRect(-2, -2, player.width + 4, 5);
             ctx.fillStyle = "#fff59d"; ctx.fillRect(4, -8, player.width - 8, 6);
@@ -555,7 +585,7 @@ Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de
             ctx.fillStyle = "#00c853"; ctx.fillRect(2, 13, player.width - 4, 14);
             ctx.fillStyle = "#b9f6ca"; ctx.fillRect(6, 13, player.width - 12, 5);
             ctx.fillStyle = "#4e342e";
-            let walking = (gameState.keysPressed['w'] || gameState.keysPressed['s'] || gameState.keysPressed['a'] || gameState.keysPressed['d']);
+            let walking = (gameState.keysPressed['up'] || gameState.keysPressed['down'] || gameState.keysPressed['left'] || gameState.keysPressed['right']);
             if (walking && player.animFrame % 2 === 0) { ctx.fillRect(2, 27, 5, 5); ctx.fillRect(player.width - 7, 27, 5, 3); } 
             else if (walking) { ctx.fillRect(2, 27, 5, 3); ctx.fillRect(player.width - 7, 27, 5, 5); } 
             else { ctx.fillRect(2, 27, 5, 5); ctx.fillRect(player.width - 7, 27, 5, 5); }
@@ -565,7 +595,7 @@ Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de
         function handleActionButton() {
             if (gameState.dialogActive) { closeDialog(); return; }
             if (gameState.currentLevel === 4 && gameState.animalsCaught < 3) {
-                showDialog("¡Aún quedan animales perdidos en este mapa! Búscalos entre los arbustos verdes antes de continuar.");
+                showDialog("¡Aún quedan animales perdidos! Búscalos entre los arbustos verdes.");
                 return;
             }
 
@@ -583,7 +613,7 @@ Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de
                 showDialog(text);
                 gameState.levelComplete = true;
             } else {
-                showDialog(gameState.currentLevel === 7 ? "¡Camina hacia Ale y dale revisar para entregarle los animales!" : "¡Examina el objetivo botánico de la derecha para avanzar en la historia!");
+                showDialog(gameState.currentLevel === 7 ? "¡Camina hacia tu novia y dale revisar!" : "¡Examina el objetivo botánico de la derecha!");
             }
         }
 
@@ -591,7 +621,7 @@ Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de
         function closeDialog() {
             document.getElementById("dialog-box").style.display = "none"; gameState.dialogActive = false;
             if (gameState.levelComplete) {
-                document.getElementById("level-reward-text").innerHTML = gameState.currentLevel === 7 ? `¡Salvaste la granja entera!<br>Introduce la clave para ver tu carta.` : `¡Completaste el mapa con éxito!<br>Prepárate para el siguiente reto de campo.`;
+                document.getElementById("level-reward-text").innerHTML = gameState.currentLevel === 7 ? `¡Salvaste la granja entera!<br>Introduce la clave para ver tu carta.` : `¡Completaste el mapa con éxito!`;
                 document.getElementById("level-complete-overlay").style.display = "flex";
             }
         }
@@ -623,20 +653,23 @@ Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de
             gameState.gameActive = false;
         }
 
+        function startMove(dir) { gameState.keysPressed[dir] = true; }
+        function stopMove(dir) { gameState.keysPressed[dir] = false; }
+
         window.addEventListener('keydown', (e) => {
             let key = e.key;
-            if (key === 'w' || key === 'W' || key === 'ArrowUp') gameState.keysPressed['w'] = true;
-            if (key === 's' || key === 'S' || key === 'ArrowDown') gameState.keysPressed['s'] = true;
-            if (key === 'a' || key === 'A' || key === 'ArrowLeft') gameState.keysPressed['a'] = true;
-            if (key === 'd' || key === 'D' || key === 'ArrowRight') gameState.keysPressed['d'] = true;
+            if (key === 'w' || key === 'W' || key === 'ArrowUp') gameState.keysPressed['up'] = true;
+            if (key === 's' || key === 'S' || key === 'ArrowDown') gameState.keysPressed['down'] = true;
+            if (key === 'a' || key === 'A' || key === 'ArrowLeft') gameState.keysPressed['left'] = true;
+            if (key === 'd' || key === 'D' || key === 'ArrowRight') gameState.keysPressed['right'] = true;
             if (key === ' ') { e.preventDefault(); handleActionButton(); }
         });
         window.addEventListener('keyup', (e) => {
             let key = e.key;
-            if (key === 'w' || key === 'W' || key === 'ArrowUp') gameState.keysPressed['w'] = false;
-            if (key === 's' || key === 'S' || key === 'ArrowDown') gameState.keysPressed['s'] = false;
-            if (key === 'a' || key === 'A' || key === 'ArrowLeft') gameState.keysPressed['a'] = false;
-            if (key === 'd' || key === 'D' || key === 'ArrowRight') gameState.keysPressed['d'] = false;
+            if (key === 'w' || key === 'W' || key === 'ArrowUp') gameState.keysPressed['up'] = false;
+            if (key === 's' || key === 'S' || key === 'ArrowDown') gameState.keysPressed['down'] = false;
+            if (key === 'a' || key === 'A' || key === 'ArrowLeft') gameState.keysPressed['left'] = false;
+            if (key === 'd' || key === 'D' || key === 'ArrowRight') gameState.keysPressed['right'] = false;
         });
 
         applyConfig();
@@ -645,15 +678,11 @@ Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de
     <script>
         function exportCustomizedGame() {
             applyConfig(); 
-            
-            // Forzar reseteo absoluto de variables para el archivo que se va a clonar
-            let cleanHTML = document.documentElement.outerHTML;
-            
-            // Reemplazo maestro de cadenas: forzamos que el estado inicial en el clon SIEMPRE sea el nivel 1 y la pantalla activa sea el intro
-            cleanHTML = cleanHTML.replace('active', 'active'); 
-            
-            // Inyectar el ocultamiento definitivo del panel blanco en el clon
-            cleanHTML = cleanHTML.replace('id="main-config-panel"', 'id="main-config-panel" style="display:none;"');
+            let configPanel = document.getElementById("main-config-panel");
+            configPanel.style.display = "none";
+            let mainHTML = document.documentElement.outerHTML;
+            configPanel.style.display = "block";
+            let cleanHTML = mainHTML.replace('id="main-config-panel"', 'id="main-config-panel" style="display:none;"');
 
             let blob = new Blob([cleanHTML], { type: "text/html" });
             let url = URL.createObjectURL(blob);
@@ -666,5 +695,5 @@ Te hice este juego complicado porque sé lo dedicado que eres y tu profesión de
             URL.revokeObjectURL(url);
         }
     </script>
-
-</body></html>
+</body>
+</html>
