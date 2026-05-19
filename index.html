@@ -266,7 +266,7 @@
             lvl3: "¡Buen muestreo de manzanas neón! Una nota amarrada a la rama dice: '¡Por favor Juanin, el siguiente sector está lleno de plagas y los animales necesitan tu ayuda urgente!'", 
             lvl4: "¡Increíble, salvaste a la ovejita, la vaca y el pollito! Pero ten cuidado: 'Los escarabajos gigantes mutados están furiosos y los perseguirán en los próximos mapas...'", 
             lvl5: "¡Uff, ese escarabajo gigante acosador corría pesadísimo tras de ti! Por suerte lograste mantener a salvo a los animales. Cuidalos muchisimo amof ¡Ya casi llegas al santuario!", 
-            lvl6: "¡Dios mío, qué locura de escape! Burlaste al bicho acosador del lago sin que te atrapara. ¡El puente al santuario ambiental de Ale se ha abierto por fin!", 
+            lvl6: "¡Dios mío, qué locura de escape! Burlaste al bicho acosador del lago sin que te atraparan. ¡El puente al santuario ambiental de Ale se ha abierto por fin!", 
             lvl7: "¡Hola mi vida! Me da tanta felicidad que hayas cruzado los laberintos y salvado a los animales de las plagas. ¡Eres mi favorito en el universo! La clave que ocuparás para la siguiente pantalla es: 1210... Te amoteee corazón de melón. 🥰🌱", 
             finalLetter: "¡Felicidades mi agrónomo hermoso! 💚\n\nCompletaste los 7 laberintos extremos, escapaste de los escarabajos acosadores que te regresaba al nivel 4, rescataste a la granja y me los entregaste en mi propio santuario. Espero te haya gustado tanto como a mi, de verdad jaja.\n\nTe hice este jueguito porque sé lo dedicado que eres y queria darte un detalle lindo, amor. Siempre te lo digo pero nunca será suficiente, te agardezco mucho todo y lo feliz que me haces, eres el mejooor de verdad, estoy tan emocionada por verte y espero que tu también. ¡Te amoteee muchísimo! " 
         };
@@ -521,10 +521,14 @@
         }
 
         function moveFocus(current, nextId) { if (current.value.length >= 1) document.getElementById(nextId).focus(); }
+        
+        // ¡FUNCIÓN CORREGIDA AQUÍ! Limpia y reinicia todo correctamente
         function returnToMenu() {
-            document.getElementById("screen-lock").classList.remove("active"); document.getElementById("screen-letter").classList.add("active");
-            document.getElementById("screen-game").classList.remove("active"); document.getElementById("screen-intro").classList.add("active");
+            document.getElementById("screen-letter").classList.remove("active"); 
+            document.getElementById("screen-intro").classList.add("active");
             gameState.gameActive = false;
+            gameState.currentLevel = 1;
+            gameState.animalsCaught = 0;
         }
 
         function startMove(dir) { gameState.keysPressed[dir] = true; }
